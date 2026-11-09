@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "MVC Lab 07 - Student REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/Lab_Sheet_07_Custom_MVC_REST_API/public"
+    },
+    {
+      "key": "student_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET all students",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/students"
+      }
+    },
+    {
+      "name": "GET student by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/students/{{student_id}}"
+      }
+    },
+    {
+      "name": "POST create student",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/students",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Key",
+            "value": "lab-demo-key"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Aman Khan\",\n  \"email\": \"aman@example.com\",\n  \"course\": \"MCA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "PUT update student",
+      "request": {
+        "method": "PUT",
+        "url": "{{base_url}}/api/students/{{student_id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Key",
+            "value": "lab-demo-key"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Aman Updated\",\n  \"email\": \"aman@example.com\",\n  \"course\": \"MCA\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "DELETE student",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base_url}}/api/students/{{student_id}}",
+        "header": [
+          {
+            "key": "X-API-Key",
+            "value": "lab-demo-key"
+          }
+        ]
+      }
+    }
+  ]
+}

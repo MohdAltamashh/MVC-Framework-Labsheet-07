@@ -1,0 +1,2 @@
+<?php
+class Request{public function method():string{return $_SERVER['REQUEST_METHOD']??'GET';}public function path():string{$p=parse_url($_SERVER['REQUEST_URI']??'/',PHP_URL_PATH)?:'/';$b=parse_url(BASE_URL,PHP_URL_PATH)?:'';if($b!==''&&str_starts_with($p,$b))$p=substr($p,strlen($b));return '/'.trim($p,'/');}public function input():array{$type=$_SERVER['CONTENT_TYPE']??'';if(str_contains($type,'application/json')){$d=json_decode(file_get_contents('php://input'),true);return is_array($d)?$d:[];}return $_POST;}public function query():array{return $_GET;}}
